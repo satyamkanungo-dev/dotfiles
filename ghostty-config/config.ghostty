@@ -1,0 +1,47 @@
+custom-shader = shaders/cursor_trail.glsl
+theme = TokyoNight
+
+# Windows
+window-decoration = true
+fullscreen = true
+window-theme = ghostty
+window-padding-x = 10
+window-padding-y = 10
+window-padding-color = extend
+window-padding-balance = true
+
+# Path to your image
+background-image = ../../personal/assets/Sukuna.jpg
+background-image-fit = cover
+
+# Set the opacity of the IMAGE itself (0.0 to 1.0)
+background-image-opacity = 0.09
+
+# Transparency and Blur
+background-opacity = 1.0
+background-blur-radius = 20
+
+# Font
+font-family = CaskaydiaMono Nerd Font
+font-size = 16
+
+# Mouse
+mouse-scroll-multiplier = 2
+copy-on-select = clipboard
+mouse-hide-while-typing = true 
+
+# Scrolling
+scroll-to-bottom = keystroke,output
+
+# Cursor
+shell-integration-features = no-cursor
+cursor-color = #ff00ff
+cursor-text = #000000
+
+# Keybinds
+keybind = ctrl+v=paste_from_clipboard
+
+# Split divider
+split-divider-color = #9acd32
+
+
