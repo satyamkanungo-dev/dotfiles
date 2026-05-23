@@ -2,7 +2,7 @@
 
 > My personal terminal configuration — tmux + Oh My Posh custom theme.
 
-![Demo](assets/img/demo.png)
+![Demo](assets/img/demo2.png)
 
 ---
 
@@ -68,11 +68,11 @@ source ~/.bashrc
 
 ## Requirements
 
-| Tool | Version |
-|------|---------|
-| [tmux](https://github.com/tmux/tmux) | `>= 3.2` |
-| [Oh My Posh](https://ohmyposh.dev/) | `>= 20.x` |
-| Nerd Font | any |
+| Tool                                 | Version   |
+| ------------------------------------ | --------- |
+| [tmux](https://github.com/tmux/tmux) | `>= 3.2`  |
+| [Oh My Posh](https://ohmyposh.dev/)  | `>= 20.x` |
+| Nerd Font                            | any       |
 
 ---
 
@@ -82,6 +82,7 @@ If you're looking for a faster, more modern terminal — give [Ghostty](https://
 This repo includes a ready-to-use config with a **cursor trail shader** that adds a smooth trailing effect to your cursor as it moves.
 
 **Files:**
+
 - `ghostty-config/config.ghostty` — main Ghostty config
 - `ghostty-config/shaders/cursor_trail.glsl` — custom GLSL cursor trail shader
 
