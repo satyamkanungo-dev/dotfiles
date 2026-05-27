@@ -105,6 +105,10 @@ Then restart Ghostty — the cursor trail will be active automatically.
 
 ---
 
+## Neovim
+
+> Coming soon...
+
 ## License
 
 MIT
