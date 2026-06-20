@@ -110,6 +110,7 @@ vf() {
   fi
 }
 
+# attach tmux in ghostty 
 if [[ "$TERM_PROGRAM" == "ghostty" ]]; then
     if [[ "$*" == "" ]]; then
         command tmux new-session -A -s work \; \
@@ -120,9 +121,6 @@ if [[ "$TERM_PROGRAM" == "ghostty" ]]; then
 
 fi
 
-if [[ "$TERM_PROGRAM" == "" ]]; then
-    command ghostty
-fi
 
 # Tab: accept autosuggestion if one is showing, otherwise normal completion
 _tab_accept_or_complete() {
