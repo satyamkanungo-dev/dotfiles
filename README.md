@@ -2,7 +2,7 @@
 
 > My personal terminal configuration — tmux + Oh My Posh custom theme.
 
-![Demo](assets/img/demo2.png)
+![Demo](assets/img/demo3.png)
 
 ---
 
