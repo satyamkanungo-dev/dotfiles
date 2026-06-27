@@ -74,6 +74,7 @@ alias lg='lazygit'
 alias gho='ghostty'
 alias bat='batcat'
 alias vi='nvim'
+alias gho='ghostty'
 
 # Alert alias adapted for zsh
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(fc -ln -1 | sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -94,8 +95,9 @@ eval "$(zoxide init zsh)"
 # Tmux wrapper function
 tmux() {
     if [[ "$*" == "" ]]; then
-        command tmux new-session -A -s work \; \
-            popup -h 100% -w 100% -E  'tmux attach -t work'
+        command tmux new-session -A -s work 
+        #\; \
+         #   popup -h 100% -w 100% -E  'tmux attach -t work'
     else
         command tmux "$@"
     fi
@@ -112,13 +114,7 @@ vf() {
 
 # attach tmux in ghostty 
 if [[ "$TERM_PROGRAM" == "ghostty" ]]; then
-    if [[ "$*" == "" ]]; then
-        command tmux new-session -A -s work \; \
-            popup -h 100% -w 100% -E  'tmux attach -t work'
-    else
-        command tmux "$@"
-    fi
-
+   exec tmux 
 fi
 
 
