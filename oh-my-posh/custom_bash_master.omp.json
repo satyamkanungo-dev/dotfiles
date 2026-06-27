@@ -9,7 +9,7 @@
           "type": "os",
           "style": "plain",
           "foreground": "#ff00ff",
-          "template": "\u256d\u2500 <#d75f00>{{.Icon}}</> ",
+          "template": " <#d75f00>{{.Icon}}</> ",
           "options": {
             "alpine": "\uf300",
             "arch": "\uf303",
@@ -41,37 +41,32 @@
           "type": "git",
           "style": "plain",
           "foreground": "#D0666F",
-          "template": " <#DDB15F>git:</><#5FAAE8>(</>{{.UpstreamIcon }} {{ .HEAD }}{{ if .Working.Changed }} <#FFEB3B>{{ .Working.String }}</>{{ end }}<#5FAAE8>)</>{{ if or .Working.Changed .Staging.Changed }} <#FFEB3B>\u2717</>{{ end }}",
           "options": {
-            "branch_icon": "\ue0a0",
+            "branch_icon": "\ue725 ",
+            "cherry_pick_icon": "\ue29b ",
+            "commit_icon": "\uf417 ",
             "fetch_status": true,
+            "merge_icon": "\ue727 ",
+            "no_commits_icon": "\uf0c3 ",
+            "rebase_icon": "\ue728 ",
+            "revert_icon": "\uf0e2 ",
+            "tag_icon": "\uf412 ",
             "fetch_upstream_icon": true
-          }
+          },
+          "template": "<#DDB15F>git:</><#5FAAE8>(</>{{.UpstreamIcon }} {{ .HEAD }}{{ if .Working.Changed }}{{ if .Working.Added }} {{ .Working.Added }}<#00FF00>+</>{{ end }}{{ if .Working.Modified }} {{ .Working.Modified }}<#FFEB3B>!</>{{ end }}{{ if .Working.Deleted }} {{ .Working.Deleted }}<#FF0000>-</>{{ end }}{{ if .Working.Untracked }} {{ .Working.Untracked }}<#FF0000>?</>{{ end }}{{ if .Working.Unmerged }} {{ .Working.Unmerged }}<#FF0000>✖</>{{ end }}{{ end }}{{ if .Staging.Changed }}<#FF9800> ●</>{{ end }}{{ if gt .Ahead 0 }} <#00FF00>{{ .Ahead }}↑</>{{ end }}{{ if gt .Behind 0 }} <#FF0000>{{ .Behind }}↓</>{{ end }}<#5FAAE8>)</>"
         },
         {
           "foreground": "#FF0000",
           "style": "plain",
           "template": " error",
           "type": "status"
-        }
-      ],
-      "type": "prompt"
-    },
-    {
-      "alignment": "left",
-      "newline": true,
-      "segments": [
-        {
-          "type": "text",
-          "style": "plain",
-          "foreground": "#ff00ff",
-          "template": "\u2502\n\u2570\u2500"
         },
         {
-          "type": "text",
+          "foreground": "#FFEB3B",
           "style": "plain",
-          "foreground": "#ffffff",
-          "template": ">"
+          "template": " \u276f",
+
+          "type": "text"
         }
       ],
       "type": "prompt"
