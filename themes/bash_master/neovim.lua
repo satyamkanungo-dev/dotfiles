@@ -29,7 +29,7 @@ return {
       end,
       on_highlights = function(hl)
         -- Gruvbox Syntax Palette Mapping
-        local g                     = {
+        local g = {
           bg0    = "#282828",
           fg1    = "#ebdbb2",
           red    = "#fb4934",
@@ -40,7 +40,7 @@ return {
           aqua   = "#8ec07c",
           orange = "#fe8019",
           gray   = "#928374",
-          wheat = "#ffdead",
+          wheat  = "#ffdead",
         }
 
         -- Standard Syntax Highlighting (Gruvbox Standard)
@@ -61,6 +61,12 @@ return {
         hl.Structure                = { fg = g.aqua }
         hl.Special                  = { fg = g.orange }
 
+        -- Line numbers (relative numbers above/below the cursor + current line)
+        hl.LineNr                   = { fg = g.wheat }
+        hl.LineNrAbove              = { fg = g.wheat }
+        hl.LineNrBelow              = { fg = g.wheat }
+        hl.CursorLineNr             = { fg = g.orange, bold = true }
+
         -- Treesitter Syntax Overrides
         hl["@variable"]             = { fg = g.fg1 }
         hl["@variable.builtin"]     = { fg = g.orange }
@@ -80,7 +86,7 @@ return {
         hl["@tag"]                  = { fg = g.aqua }
         hl["@tag.attribute"]        = { fg = g.green }
 
-        -- -- Forced Blue Highlight Rules (Functions, Calls, Built-ins & Brackets)
+        -- Forced Blue Highlight Rules (Functions, Calls, Built-ins & Brackets)
         hl.Function                 = { fg = "#00bfff" }
         hl["@function"]             = { fg = "#00bfff" }
         hl["@function.builtin"]     = { fg = "#00bfff" } -- e.g. len(), make()
@@ -89,13 +95,13 @@ return {
         hl["@function.method.call"] = { fg = "#00bfff" } -- e.g. s.call()
         hl["@method"]               = { fg = "#00bfff" }
         hl["@method.call"]          = { fg = "#00bfff" }
-        --
-        -- Parentheses () -> Blue
+
+        -- Brackets () [] {} -> pink
         hl["@punctuation.bracket"]  = { fg = "#ff3e96" }
 
-                -- Data types (error, string, int, ...) and chan -> red
-        hl["@type.builtin"]                = { fg = g.red }
-        hl["@keyword.type"]                = { fg = g.red }  -- chan, map, struct, interface
+        -- Data types (error, string, int, ...) and chan -> red
+        hl["@type.builtin"]                    = { fg = g.red }
+        hl["@keyword.type"]                    = { fg = g.red } -- chan, map, struct, interface
         hl["@lsp.typemod.type.defaultLibrary"] = { fg = g.red } -- gopls: error, string, etc.
 
         -- Packages -> purple
@@ -113,6 +119,24 @@ return {
         hl["@lsp.type.variable"]    = { fg = g.fg1 }
       end,
     },
+    config = function(_, opts)
+      require("tokyonight").setup(opts)
+
+      -- Safety net: re-apply line number colors whenever the colorscheme loads,
+      -- in case a plugin (statuscolumn, etc.) overrides them afterwards.
+      local function fix_linenr()
+        local set = vim.api.nvim_set_hl
+        set(0, "LineNr",       { fg = "#928374" })
+        set(0, "LineNrAbove",  { fg = "#928374" })
+        set(0, "LineNrBelow",  { fg = "#928374" })
+        set(0, "CursorLineNr", { fg = "#fe8019", bold = true })
+      end
+
+      vim.api.nvim_create_autocmd("ColorScheme", {
+        pattern = "tokyonight*",
+        callback = fix_linenr,
+      })
+    end,
   },
   {
     "LazyVim/LazyVim",
