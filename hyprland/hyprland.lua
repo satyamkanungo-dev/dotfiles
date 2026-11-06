@@ -1,86 +1,113 @@
 hl.config({
-  general = {
-    -- No gaps between windows or borders.
-    gaps_in = 3,
-    gaps_out = 8,
-    border_size = 2,
+	general = {
+		-- No gaps between windows or borders.
+		gaps_in = 3,
+		gaps_out = 8,
+		border_size = 2,
 
-    -- Change to niri-like side-scrolling layout.
-    layout = "scrolling",
-  },
+		-- Change to niri-like side-scrolling layout.
+		layout = "scrolling",
+	},
 })
 
 -- https://wiki.hypr.land/Configuring/Basics/Variables/#decoration
 hl.config({
-  decoration = {
-    -- Use round window corners.
-    rounding = 8,
-    -- active_opacity = 0.85,
-    -- inactive_opacity = 0.93,
+	decoration = {
+		-- Use round window corners.
+		rounding = 8,
+		-- active_opacity = 0.85,
+		-- inactive_opacity = 0.93,
 
-    -- Dim unfocused windows (0.0 = no dim, 1.0 = fully dimmed).
-    -- dim_inactive = true,
-    -- dim_strength = 0.15,
-    --
-  },
+		-- Dim unfocused windows (0.0 = no dim, 1.0 = fully dimmed).
+		-- dim_inactive = true,
+		-- dim_strength = 0.15,
+		--
+	},
 })
 
 -- 1. Turn blur off for every window
 hl.window_rule({
-    name    = "no-blur-everything",
-    match   = { class = ".*" },
-    no_blur = true,
+	name = "no-blur-everything",
+	match = { class = ".*" },
+	no_blur = true,
 })
 
 hl.window_rule({
-    name    = "transparent-apps",
-    opacity = "0.79 0.83",
-    no_blur = false,
-    match   = { class = "^(Spotify|kitty|chrome-claude.ai__new-Default|TUI.tile|TUI.float|org.omarchy.btop|org.omarchy.about|org.omarchy.terminal)$" },
+	name = "transparent-apps",
+	opacity = "0.79 0.83",
+	no_blur = false,
+	match = {
+		class = "^(Spotify|kitty|chrome-claude.ai__new-Default|TUI.tile|TUI.float|org.omarchy.btop|org.omarchy.about|org.omarchy.terminal)$",
+	},
 })
 
 hl.window_rule({
-    name    = "transparent-web-apps",
-    opacity = "0.85 0.89",
-    no_blur = false,
-    match   = { class = "^(chrome-web.whatsapp.com__-Default|org.telegram.desktop|chrome-x.com__-Default)$" },
+	name = "transparent-web-apps",
+	opacity = "0.85 0.89",
+	no_blur = false,
+	match = { class = "^(chrome-web.whatsapp.com__-Default|org.telegram.desktop|chrome-x.com__-Default)$" },
 })
 
-
-
+-- blur 1
 hl.config({
-  general = {
-    --border_size = 0,
-    col = {
-      active_border = "#ede8d5",
-      -- active_border = "0x890a0a0a",
-      -- inactive_border = "0x890a0a0a",
-    },
-  },
+	general = {
+		--border_size = 0,
+		col = {
+			active_border = "#ede8d5",
+			-- active_border = "0x890a0a0a",
+			-- inactive_border = "0x890a0a0a",
+		},
+	},
 
-  decoration = {
-    shadow = {
-       enabled = true,
-       range = 28,
-       render_power = 3,
-       color = "0x890a0a0a",
-     },
+	decoration = {
+		shadow = {
+			enabled = true,
+			range = 28,
+			render_power = 3,
+			color = "0x890a0a0a",
+		},
 
-    blur = {
-        enabled = true,
-        brightness = 1.2,
-        contrast = 1.2,
-        size = 6,
-        passes = 2,
-        ignore_opacity = true,
-    	  new_optimizations = true,
-    	  special = false,
-    	  popups = true,
-    	  xray = false,
-        vibrancy = 0.1696,
-        vibrancy_darkness = 0.35,
-    }
-  },
+		blur = {
+			enabled = true,
+			brightness = 1.2,
+			contrast = 1.2,
+			size = 6,
+			passes = 2,
+			ignore_opacity = true,
+			new_optimizations = true,
+			special = false,
+			popups = true,
+			xray = false,
+			vibrancy = 0.1696,
+			vibrancy_darkness = 0.35,
+		},
+	},
 })
 
+-- blur 2
+hl.config({
+	decoration = {
+		blur = {
+			enabled = true,
+			size = 6, -- blur radius (higher = softer)
+			passes = 2, -- more passes = smoother blur
+			noise = 0.02, -- slight grain like frosted glass
+			contrast = 0.85,
+			brightness = 1.0, -- darkens the blurred backdrop
+			vibrancy = 0.3, -- keeps colours rich through blur
+			vibrancy_darkness = 0.7,
+			ignore_opacity = true, -- blur works on translucent windows
+			new_optimizations = true,
+			xray = false, -- blur windows beneath too (not just wallpaper)
+			popups = true, -- blur menus/popups
+			popups_ignorealpha = 0.2,
+		},
 
+		shadow = {
+			enabled = true,
+			range = 20,
+			render_power = 3,
+			color = "0x66000000",
+		},
+	},
+})
