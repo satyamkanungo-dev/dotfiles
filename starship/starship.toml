@@ -111,7 +111,6 @@ when = "git rev-parse --is-inside-work-tree"
 format = "[\ue0b4](fg:#2b2e42)"
 
 [git_branch]
-base = "[\ue0b6](fg:#2b2e42)"
 symbol = "\uf418 "
 style = "fg:#ff4500 bg:#2b2e42"
 format = "[ $symbol$branch ]($style)"
